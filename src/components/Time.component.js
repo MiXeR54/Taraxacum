@@ -49,8 +49,9 @@ export default class Time extends Component {
       currentSort: nextSort,
     });
   };
+
   render() {
-    const { data, error, isLoading, currentSort } = this.state;
+    var { data, error, isLoading, currentSort } = this.state;
 
     if (!data) {
       return (
@@ -75,6 +76,41 @@ export default class Time extends Component {
         </div>
       );
     }
+
+    data.forEach((d) => {
+      var milliseconds, days, hours, minutes, seconds;
+      if (d.leaveDate > 0) {
+        milliseconds = Date.now() - d.leaveDate;
+        days = Math.floor(milliseconds / (24 * 60 * 60 * 1000));
+        if (days < 0) {
+          days = 0;
+        }
+        milliseconds -= days * 24 * 60 * 60 * 1000;
+
+        hours = Math.floor(milliseconds / (60 * 60 * 1000));
+        if (hours < 0) {
+          hours = 0;
+        }
+        milliseconds -= hours * 60 * 60 * 1000;
+
+        minutes = Math.floor(milliseconds / (60 * 1000));
+        if (minutes < 0) {
+          minutes = 0;
+        }
+        milliseconds -= minutes * 60 * 1000;
+
+        seconds = Math.floor(milliseconds / 1000);
+        if (seconds < 0) {
+          seconds = 0;
+        }
+      } else {
+        days = hours = minutes = seconds = 0;
+      }
+      d.days = days;
+      d.hours = hours;
+      d.minutes = minutes;
+      d.seconds = seconds;
+    });
 
     return (
       <div className="container">
@@ -102,12 +138,12 @@ export default class Time extends Component {
               <tr key={user._id}>
                 <td className="text-center">{user.name}</td>
                 <td className="text-center">
-                  {Number.parseInt(((Date.now() - user.leaveDate) / 3600000)
-                    .toString()
-                    .slice(0, 5)) > 24 ? "> 24 ч назад" : ((Date.now() - user.leaveDate) / 3600000)
-                    .toString()
-                    .slice(0, 5) + " часов назад"
-                    }
+                  {user.days.toString() +
+                    " дней " +
+                    user.hours.toString() +
+                    " часов " +
+                    user.minutes.toString() +
+                    " минут назад"}
                 </td>
                 <td className="text-center">
                   {(user.Duration / 60).toString().slice(0, 6)} мин.
