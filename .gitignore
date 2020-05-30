@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#configs by MiXeR54
+/backend/config/default.json
+
 # testing
 /coverage
 
