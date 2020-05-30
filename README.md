@@ -1,9 +1,13 @@
-Fronted part for Minecraft Time Tracker plugin
+Fronted part for Minecraft Time Tracker plugin  
 Server-plugin: github.com/MiXeR54/Tracker-plugin
 
-Used:
+Dependencies:
 - NodeJS
-    - Mongoose
+    - MongoDB / Mongoose
     - Express
+    - Config
+    devDependencies
+    - Nodemon
+
 - ReactJS
-- MongoDB
+    - Bootstrap
