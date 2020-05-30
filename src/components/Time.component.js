@@ -87,10 +87,13 @@ export default class Time extends Component {
               <th className="text-center" scope="col">
                 Последний онлайн
               </th>
-              <th className="text-center" scope="col">
-                <button type="button" onClick={this.onSortChange}>
-                  Played Time
-                </button>
+              <th
+                className="text-center"
+                scope="col"
+                onClick={this.onSortChange}
+              >
+                Played Time&nbsp;
+                <i className={`fas fa-${sortTypes[currentSort].class}`} />
               </th>
             </tr>
           </thead>
