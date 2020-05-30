@@ -102,10 +102,12 @@ export default class Time extends Component {
               <tr key={user._id}>
                 <td className="text-center">{user.name}</td>
                 <td className="text-center">
-                  {((Date.now() - user.leaveDate) / 3600000)
+                  {Number.parseInt(((Date.now() - user.leaveDate) / 3600000)
                     .toString()
-                    .slice(0, 5)}{" "}
-                  часов назад
+                    .slice(0, 5)) > 24 ? "> 24 ч назад" : ((Date.now() - user.leaveDate) / 3600000)
+                    .toString()
+                    .slice(0, 5) + " часов назад"
+                    }
                 </td>
                 <td className="text-center">
                   {(user.Duration / 60).toString().slice(0, 6)} мин.
