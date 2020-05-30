@@ -22,7 +22,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({}, { collection: "Users" });
 const Users = mongoose.model("User", userSchema);
 
-app.get("/", async (req, res) => {
+app.get("/data", async (req, res) => {
   Users.find().then((Users) => res.json(Users));
 });
 

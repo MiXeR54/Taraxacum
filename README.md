@@ -3,11 +3,12 @@ Server-plugin: github.com/MiXeR54/Tracker-plugin
 
 Dependencies:
 - NodeJS
-    - MongoDB / Mongoose
-    - Express
-    - Config
-    devDependencies
-    - Nodemon
+  - MongoDB / Mongoose
+  - Express
+  - Config
+  - Nodemon
 
 - ReactJS
     - Bootstrap
+    - Axios
+    - React Router
