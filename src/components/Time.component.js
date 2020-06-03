@@ -128,7 +128,7 @@ export default class Time extends Component {
                 scope="col"
                 onClick={this.onSortChange}
               >
-                Played Time&nbsp;
+                В игре&nbsp;
                 <i className={`fas fa-${sortTypes[currentSort].class}`} />
               </th>
             </tr>
@@ -146,7 +146,7 @@ export default class Time extends Component {
                     " минут назад"}
                 </td>
                 <td className="text-center">
-                  {(user.Duration / 60).toString().slice(0, 6)} мин.
+                  {Math.ceil((user.Duration / 60).toString())} мин.
                 </td>
               </tr>
             ))}
